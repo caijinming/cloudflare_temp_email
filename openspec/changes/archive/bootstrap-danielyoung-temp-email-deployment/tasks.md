@@ -12,8 +12,8 @@
 - [x] Build frontend locally
 - [x] Create Pages project `danielyoung-temp-email`
 - [x] Deploy frontend to Pages
-- [ ] Confirm nameserver cutover for `danielyoung.top`
-- [ ] Enable Cloudflare Email Routing on `danielyoung.top`
-- [ ] Verify a destination mailbox in Email Routing
-- [ ] Route `Catch-all` mail to Worker `danielyoung-temp-email-api`
-- [ ] End-to-end verify mail delivery to a generated address
+- [x] Confirm nameserver cutover for `danielyoung.top`
+- [x] Enable Cloudflare Email Routing on `danielyoung.top`
+- [x] Verify a destination mailbox in Email Routing
+- [x] Route `Catch-all` mail to Worker `danielyoung-temp-email-api`
+- [x] End-to-end verify mail delivery to a generated address

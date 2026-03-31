@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls /Users/longhuadmin/Documents/project/mail/cloudflare_temp_email/frontend/.env*)",
+      "Bash(cat /Users/longhuadmin/Documents/project/mail/cloudflare_temp_email/.github/workflows/*.yml)",
+      "Bash(cat /Users/longhuadmin/Documents/project/mail/cloudflare_temp_email/db/*.sql)",
+      "Bash(wrangler whoami:*)",
+      "Bash(wrangler d1:*)",
+      "Bash(npx wrangler:*)",
+      "Bash(openssl rand:*)",
+      "Bash(pnpm install:*)",
+      "Bash(pnpm build:pages)",
+      "Bash(curl -s https://adavidclark-temp-email-api.jinmcai-jobworks.workers.dev/health_check)",
+      "Bash(curl -s https://davidclarks-temp-email-api.jinmcai-jobworks.workers.dev/health_check)",
+      "Bash(dig MX danielyoung.top +short)",
+      "Bash(dig MX adavidclark.xyz +short)",
+      "Bash(dig MX davidclarks.xyz +short)",
+      "Bash(curl -s https://danielyoung-temp-email-api.jinmcai-jobworks.workers.dev/api/new_address -X POST -H 'Content-Type: application/json' -d '{\"\"name\"\":\"\"test\"\"}')",
+      "Bash(curl -s https://adavidclark-temp-email-api.jinmcai-jobworks.workers.dev/api/new_address -X POST -H 'Content-Type: application/json' -d '{\"\"name\"\":\"\"test\"\"}')",
+      "Bash(curl -s https://davidclarks-temp-email-api.jinmcai-jobworks.workers.dev/api/new_address -X POST -H 'Content-Type: application/json' -d '{\"\"name\"\":\"\"test\"\"}')",
+      "Bash(curl -s https://adavidclark-temp-email-api.jinmcai-jobworks.workers.dev/)",
+      "Bash(curl -s https://adavidclark-temp-email-api.jinmcai-jobworks.workers.dev/open_api/settings)",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(''''domains:'''', d.get\\(''''domains''''\\)\\); print\\(''''type:'''', type\\(d.get\\(''''domains''''\\)\\)\\)\")",
+      "Bash(curl -s 'https://adavidclark-temp-email-api.jinmcai-jobworks.workers.dev/open_api/settings' -H 'Accept: application/json')",
+      "Bash(python3 -m json.tool)"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "context7"
+  ]
+}

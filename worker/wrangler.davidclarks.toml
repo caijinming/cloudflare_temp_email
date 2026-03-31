@@ -1,0 +1,18 @@
+name = "davidclarks-temp-email-api"
+main = "src/worker.ts"
+compatibility_date = "2025-04-01"
+compatibility_flags = [ "nodejs_compat" ]
+keep_vars = true
+
+[vars]
+PREFIX = "tmp"
+ENABLE_USER_CREATE_EMAIL = true
+DEFAULT_DOMAINS = ["davidclarks.xyz"]
+DOMAINS = ["davidclarks.xyz"]
+JWT_SECRET = "mc6DxaGOhN2eadXk0iJAjKUc9/C91u/rvP0ZDS2UuDE="
+FRONTEND_URL = "https://davidclarks-temp-email.pages.dev"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "davidclarks-temp-email"
+database_id = "c9fb896f-4ef5-4aba-87d9-db5b7311af09"

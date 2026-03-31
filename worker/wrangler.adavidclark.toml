@@ -1,0 +1,18 @@
+name = "adavidclark-temp-email-api"
+main = "src/worker.ts"
+compatibility_date = "2025-04-01"
+compatibility_flags = [ "nodejs_compat" ]
+keep_vars = true
+
+[vars]
+PREFIX = "tmp"
+ENABLE_USER_CREATE_EMAIL = true
+DEFAULT_DOMAINS = ["adavidclark.xyz"]
+DOMAINS = ["adavidclark.xyz"]
+JWT_SECRET = "fxdYVbg/tWXkAE0GPvrex0/6q37OWUhHV8MCM/G24P8="
+FRONTEND_URL = "https://adavidclark-temp-email.pages.dev"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "adavidclark-temp-email"
+database_id = "e318b1fa-47e2-47ab-952e-9ca688978306"

@@ -62,38 +62,45 @@ const apiFetch = async (path, options = {}) => {
 const getOpenSettings = async (message, notification) => {
     try {
         const res = await api.fetch("/open_api/settings");
-        const domainLabels = res["domainLabels"] || [];
-        if (res["domains"]?.length < 1) {
+        const safeRes = (res && typeof res === 'object' && !Array.isArray(res)) ? res : {};
+        const domains = Array.isArray(safeRes["domains"]) ? safeRes["domains"] : [];
+        const domainLabels = Array.isArray(safeRes["domainLabels"]) ? safeRes["domainLabels"] : [];
+
+        if (res !== safeRes) {
+            message.error("Invalid open settings response, please check your API base and worker settings");
+        }
+
+        if (domains.length < 1) {
             message.error("No domains found, please check your worker settings");
         }
         Object.assign(openSettings.value, {
-            ...res,
-            title: res["title"] || "",
-            prefix: res["prefix"] || "",
-            minAddressLen: res["minAddressLen"] || 1,
-            maxAddressLen: res["maxAddressLen"] || 30,
-            needAuth: res["needAuth"] || false,
-            defaultDomains: res["defaultDomains"] || [],
-            domains: res["domains"].map((domain, index) => {
+            ...safeRes,
+            title: safeRes["title"] || "",
+            prefix: safeRes["prefix"] || "",
+            minAddressLen: safeRes["minAddressLen"] || 1,
+            maxAddressLen: safeRes["maxAddressLen"] || 30,
+            needAuth: safeRes["needAuth"] || false,
+            defaultDomains: Array.isArray(safeRes["defaultDomains"]) ? safeRes["defaultDomains"] : [],
+            domains: domains.map((domain, index) => {
                 return {
                     label: domainLabels.length > index ? domainLabels[index] : domain,
                     value: domain
                 }
             }),
-            adminContact: res["adminContact"] || "",
-            enableUserCreateEmail: res["enableUserCreateEmail"] || false,
-            disableAnonymousUserCreateEmail: res["disableAnonymousUserCreateEmail"] || false,
-            disableCustomAddressName: res["disableCustomAddressName"] || false,
-            enableUserDeleteEmail: res["enableUserDeleteEmail"] || false,
-            enableAutoReply: res["enableAutoReply"] || false,
-            enableIndexAbout: res["enableIndexAbout"] || false,
-            copyright: res["copyright"] || openSettings.value.copyright,
-            cfTurnstileSiteKey: res["cfTurnstileSiteKey"] || "",
-            enableWebhook: res["enableWebhook"] || false,
-            isS3Enabled: res["isS3Enabled"] || false,
-            enableAddressPassword: res["enableAddressPassword"] || false,
-            statusUrl: res["statusUrl"] || "",
-            enableGlobalTurnstileCheck: res["enableGlobalTurnstileCheck"] || false,
+            adminContact: safeRes["adminContact"] || "",
+            enableUserCreateEmail: safeRes["enableUserCreateEmail"] || false,
+            disableAnonymousUserCreateEmail: safeRes["disableAnonymousUserCreateEmail"] || false,
+            disableCustomAddressName: safeRes["disableCustomAddressName"] || false,
+            enableUserDeleteEmail: safeRes["enableUserDeleteEmail"] || false,
+            enableAutoReply: safeRes["enableAutoReply"] || false,
+            enableIndexAbout: safeRes["enableIndexAbout"] || false,
+            copyright: safeRes["copyright"] || openSettings.value.copyright,
+            cfTurnstileSiteKey: safeRes["cfTurnstileSiteKey"] || "",
+            enableWebhook: safeRes["enableWebhook"] || false,
+            isS3Enabled: safeRes["isS3Enabled"] || false,
+            enableAddressPassword: safeRes["enableAddressPassword"] || false,
+            statusUrl: safeRes["statusUrl"] || "",
+            enableGlobalTurnstileCheck: safeRes["enableGlobalTurnstileCheck"] || false,
         });
         if (openSettings.value.needAuth) {
             showAuth.value = true;
